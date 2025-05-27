@@ -1,10 +1,10 @@
+import { configureStore } from '@reduxjs/toolkit';
+import clockReducer from './Slices/clockSlice';
 
-import { createStore } from 'redux';
-import rootReducer from './rootReducer';
-
-const store = createStore(
-  rootReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = configureStore({
+  reducer: {
+    clock: clockReducer
+  }
+});
 
 export default store;

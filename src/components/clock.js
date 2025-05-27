@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateTime } from '../redux/clock/clockActions';
+import { updateTime } from '../redux/Slices/clockSlice';
 
 const Clock = () => {
   const dispatch = useDispatch();
-  const currentTime = useSelector(state => state.clock.currentTime);
+  const time = useSelector((state) => state.clock.time);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -17,7 +17,7 @@ const Clock = () => {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px', fontSize: '2rem' }}>
       <h2>Current Time:</h2>
-      <h1>{new Date(currentTime).toLocaleTimeString()}</h1>
+      <h1>{time || 'Loading...'}</h1>
     </div>
   );
 };
